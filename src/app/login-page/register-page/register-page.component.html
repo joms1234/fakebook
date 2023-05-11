@@ -1,0 +1,82 @@
+<form [formGroup]="RegisterForms" (ngSubmit)="onRegSubmit()">
+    <div formGroupName="userData">
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label" for="form3Example1c">Your Name</label>
+                <input type="text" id="form3Example1c" class="form-control" formControlName="Name"
+                    placeholder="Enter your name" />
+                <span *ngIf="
+            !RegisterForms.get('userData.Name').valid &&
+            RegisterForms.get('userData.Name').touched
+          ">
+                    <span *ngIf="RegisterForms.get('userData.Name').errors['required']">This field is required!</span>
+
+                </span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label" for="form3Example3c">Your Email</label>
+                <input type="email" id="form3Example3c" class="form-control" formControlName="Email"
+                    placeholder="Example@Example.com" />
+                <span *ngIf="
+                    !RegisterForms.get('userData.Email').valid &&
+                    RegisterForms.get('userData.Email').touched
+                  ">
+                    <span *ngIf="RegisterForms.get('userData.Email').errors['required']">This field is required!</span>
+                    <span *ngIf="RegisterForms.get('userData.Email').errors['email']">This field is required!</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label" for="form3Example4c">Password</label>
+                <input type="password" id="form3Example4c" class="form-control" formControlName="Password"
+                    placeholder="Password" />
+                <span *ngIf="
+                    !RegisterForms.get('userData.Password').valid &&
+                    RegisterForms.get('userData.Password').touched
+                  ">
+                    <span *ngIf="RegisterForms.get('userData.Password').errors['required']">This field is
+                        required!</span>
+                    <span *ngIf="RegisterForms.get('userData.Password').errors['pattern']">This field is
+                        required!</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-center mb-4">
+            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+            <div class="form-outline flex-fill mb-0">
+                <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                <input type="password" id="form3Example4cd" class="form-control" formControlName="ConfirmPassword"
+                    placeholder="Confirm Password" />
+                <span *ngIf="
+                    !RegisterForms.get('userData.ConfirmPassword').valid &&
+                    RegisterForms.get('userData.ConfirmPassword').touched
+                  ">
+                    <span *ngIf="RegisterForms.get('userData.ConfirmPassword').errors['required']">This field is
+                        required!</span>
+                    <span *ngIf="RegisterForms.get('userData.ConfirmPassword').errors['pattern']">This field is
+                        required!</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-check d-flex justify-content-center mb-5">
+        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
+        <label class="form-check-label" for="form2Example3">
+            I agree all statements in <a href="#!">Terms of service</a>
+        </label>
+    </div>
+
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="button" class="btn btn-primary btn-lg" (click)="onRegSubmit()" [disabled]="!RegisterForms.valid">Register</button>
+    </div>
+
+</form>
