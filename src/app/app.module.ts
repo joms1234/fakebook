@@ -7,25 +7,36 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './login-page/register-page/register-page.component';
 import { LoginFormsComponent } from './login-page/login-forms/login-forms.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
+import { FakebookService } from './shared/fakebook.service';
+import { AngularFireModule } from  '@angular/fire/compat';
+import { AngularFireAuthModule } from  '@angular/fire/compat/auth';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    LoginFormsComponent
+    LoginFormsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "AIzaSyB1nPsC8FCQSNYmC5eA5CmDMJsvIFoPZCc",
+        authDomain: "fakebook-da0ee.firebaseapp.com",
+        projectId: "fakebook-da0ee",
+        storageBucket: "fakebook-da0ee.appspot.com",
+        messagingSenderId: "60427364551",
+        appId: "1:60427364551:web:94ef042d51b6df7f4c36e2",
+        measurementId: "G-SQZ9NV677F"
+      }
+    ),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [FakebookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

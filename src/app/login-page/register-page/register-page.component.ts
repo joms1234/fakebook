@@ -32,15 +32,17 @@ export class RegisterPageComponent {
       }),
     });
   }
-  onRegSubmit() {
-    console.log("pumasok")
-    // const dataToSubmit: fakebook = {
-    //   name: . ,
-    //   email: this.RegisterForms.value.Email,
-    //   password:this.RegisterForms.value.Password,
-    //   confirm_password:this.RegisterForms.value.ConfirmPassword
-    // } 
-    this.FakebookServ.upsertContact(this.RegisterForms.value);
+  onRegSubmit() { 
+
+    const userCredential: fakebook = {
+      name: this.RegisterForms.value.userData.Name,
+      email: this.RegisterForms.value.userData.Email,
+      password: this.RegisterForms.value.userData.Password,
+      confirm_password: this.RegisterForms.value.ConfirmPassword
+    };
+
+
+    this.FakebookServ.SignUp(userCredential);
   }
 
   constructor(
